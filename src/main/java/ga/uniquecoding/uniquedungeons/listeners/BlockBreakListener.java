@@ -18,15 +18,15 @@ public class BlockBreakListener implements Listener {
     }
 
     @EventHandler
-    private void onBlockBreak(BlockBreakEvent event) {
-        Block block = event.getBlock();
-        Player player = event.getPlayer();
+    private void onBlockBreak(BlockBreakEvent e) {
+        Block block = e.getBlock();
+        Player player = e.getPlayer();
         BlockManager blockManager = gameManager.getBlockManager();
 
         if (!(gameManager.getGameState() == GameState.WAITING || gameManager.getGameState() == GameState.STARTING || gameManager.getGameState() == GameState.ACTIVE)) return;
 
         if (!blockManager.canBreak(block)) {
-            event.setCancelled(true);
+            e.setCancelled(true);
         }
     }
 }

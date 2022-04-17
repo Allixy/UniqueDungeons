@@ -4,6 +4,7 @@ import ga.uniquecoding.uniquedungeons.UniqueDungeons;
 import ga.uniquecoding.uniquedungeons.enums.GameState;
 import ga.uniquecoding.uniquedungeons.tasks.CountdownTask;
 import ga.uniquecoding.uniquedungeons.tasks.TimeLeftTask;
+import ga.uniquecoding.uniquedungeons.utils.HexUtils;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.World;
@@ -11,8 +12,6 @@ import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import static ga.uniquecoding.uniquedungeons.utils.ColorUtils.c;
 
 public class GameManager {
 
@@ -41,7 +40,7 @@ public class GameManager {
             case WAITING -> {
                 for (Player player : players) {
                     sidebarManager.setSidebar(player, "WAITING");
-                    player.sendMessage(c("&cWaiting for more players.."));
+                    player.sendMessage(HexUtils.colorify("&cWaiting for more players.."));
                 }
             }
 
@@ -60,7 +59,7 @@ public class GameManager {
 
                 for (Player player : players) {
                     sidebarManager.setSidebar(player, "ACTIVE");
-                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(c("&aThe gate has been opened!")));
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(HexUtils.colorify("&aThe gate has been opened!")));
                 }
             }
 
@@ -70,7 +69,7 @@ public class GameManager {
 
                 for (Player player : players) {
                     sidebarManager.resetSidebar(player);
-                    player.sendMessage(c("&c&lGame over!"));
+                    player.sendMessage(HexUtils.colorify("&c&lGame over!"));
                 }
             }
 

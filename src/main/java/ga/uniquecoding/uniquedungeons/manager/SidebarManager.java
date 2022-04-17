@@ -11,19 +11,19 @@ import org.bukkit.entity.Player;
 
 public class SidebarManager {
 
-    private GameManager gameManager;
+    private GameManager manager;
     private Scoreboard dungeonWaitingSidebar;
     private Scoreboard dungeonStartingSidebar;
     private Scoreboard dungeonActiveSidebar;
 
-    public SidebarManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public SidebarManager(GameManager manager) {
+        this.manager = manager;
     }
 
     public void setupSidebar() {
-        DungeonWaitingSidebar dwSidebar = new DungeonWaitingSidebar(gameManager);
-        DungeonStartingSidebar dsSidebar = new DungeonStartingSidebar(gameManager);
-        DungeonActiveSidebar daSidebar = new DungeonActiveSidebar(gameManager);
+        DungeonWaitingSidebar dwSidebar = new DungeonWaitingSidebar(manager);
+        DungeonStartingSidebar dsSidebar = new DungeonStartingSidebar(manager);
+        DungeonActiveSidebar daSidebar = new DungeonActiveSidebar(manager);
 
         this.dungeonWaitingSidebar = dwSidebar.getSidebar();
         this.dungeonStartingSidebar = dsSidebar.getSidebar();
@@ -63,15 +63,11 @@ public class SidebarManager {
         sbManager.resetScoreboard(tabPlayer);
     }
 
-    public Scoreboard getDungeonWaitingSidebar() {
-        return dungeonWaitingSidebar;
-    }
+    public String getSidebar(Player player) {
+        TabAPI instance = TabAPI.getInstance();
+        ScoreboardManager sidebarManager = instance.getScoreboardManager();
+        TabPlayer tabPlayer = instance.getPlayer(player.getUniqueId());
 
-    public Scoreboard getDungeonStartingSidebar() {
-        return dungeonStartingSidebar;
-    }
-
-    public Scoreboard getDungeonActiveSidebar() {
-        return dungeonActiveSidebar;
+        return sidebarManager.getActiveScoreboard(tabPlayer).getName();
     }
 }

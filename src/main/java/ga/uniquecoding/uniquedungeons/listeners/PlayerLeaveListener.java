@@ -1,6 +1,7 @@
 package ga.uniquecoding.uniquedungeons.listeners;
 
 import ga.uniquecoding.uniquedungeons.manager.GameManager;
+import ga.uniquecoding.uniquedungeons.utils.HexUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,7 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import static ga.uniquecoding.uniquedungeons.manager.GameManager.players;
-import static ga.uniquecoding.uniquedungeons.utils.ColorUtils.c;
 
 public class PlayerLeaveListener implements Listener {
 
@@ -24,7 +24,10 @@ public class PlayerLeaveListener implements Listener {
 
         if (players.contains(player)) {
             players.remove(player);
-            Bukkit.broadcastMessage(c("&b" + player.getName() + " left the dungeon&e (" + gameManager.getPlayers() + "/4)"));
+
+            for (Player target : players) {
+                target.sendMessage(HexUtils.colorify("&b" + player.getName() + " left the dungeon&e (" + gameManager.getPlayers() + "/4)"));
+            }
         }
     }
 }

@@ -8,10 +8,10 @@ import java.util.Set;
 
 public class BlockManager {
 
-    private GameManager gameManager;
+    private GameManager manager;
 
-    public BlockManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public BlockManager(GameManager manager) {
+        this.manager = manager;
 
         allowedToBreak.add(Material.CRACKED_STONE_BRICKS);
         allowedToBreak.add(Material.INFESTED_CRACKED_STONE_BRICKS);

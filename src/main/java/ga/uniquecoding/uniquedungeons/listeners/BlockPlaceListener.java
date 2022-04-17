@@ -15,9 +15,9 @@ public class BlockPlaceListener implements Listener {
     }
 
     @EventHandler
-    public void onPlace(BlockPlaceEvent event) {
+    public void onPlace(BlockPlaceEvent e) {
 
         if (!(gameManager.getGameState() == GameState.WAITING || gameManager.getGameState() == GameState.STARTING || gameManager.getGameState() == GameState.ACTIVE)) return;
-        event.setCancelled(true);
+        e.setCancelled(true);
     }
 }

@@ -6,10 +6,10 @@ import org.bukkit.entity.Player;
 
 public class PlayerManager {
 
-    private GameManager gameManager;
+    private GameManager manager;
 
-    public PlayerManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public PlayerManager(GameManager manager) {
+        this.manager = manager;
     }
 
     public void dungeonTp(Player player) {

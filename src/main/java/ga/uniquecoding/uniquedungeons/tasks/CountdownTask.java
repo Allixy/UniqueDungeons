@@ -2,14 +2,13 @@ package ga.uniquecoding.uniquedungeons.tasks;
 
 import ga.uniquecoding.uniquedungeons.enums.GameState;
 import ga.uniquecoding.uniquedungeons.manager.GameManager;
+import ga.uniquecoding.uniquedungeons.utils.HexUtils;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static ga.uniquecoding.uniquedungeons.manager.GameManager.players;
-import static ga.uniquecoding.uniquedungeons.utils.ColorUtils.c;
 
 public class CountdownTask extends BukkitRunnable {
 
@@ -33,7 +32,7 @@ public class CountdownTask extends BukkitRunnable {
         }
 
         for (Player player : players) {
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(c("&7The dungeon gate opening in:&c " + timeLeft + "s")));
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(HexUtils.colorify("&7The dungeon gate opening in:&c " + timeLeft + "s")));
         }
 
     }
