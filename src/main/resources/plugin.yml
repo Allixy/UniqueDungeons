@@ -1,0 +1,8 @@
+name: UniqueDungeons
+version: '${version}'
+main: ga.uniquecoding.uniquedungeons.UniqueDungeons
+api-version: 1.18
+authors: [ RealAllixy ]
+description: A Dungeons plugin.
+depend:
+  - TAB
